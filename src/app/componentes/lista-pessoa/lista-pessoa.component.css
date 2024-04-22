@@ -1,0 +1,58 @@
+.container {
+  width: 80%; /* Define a largura da tabela */
+  margin: 50px auto; /* Centraliza a tabela horizontalmente */
+}
+
+.mat-table {
+  border-collapse: collapse; /* Remove a separação entre as células */
+  table-layout: fixed; /* Define a largura da tabela como fixa */
+  width: 100%; /* Define a largura da tabela como 100% do contêiner */
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 10px;
+  border: 1px solid #ddd; /* Adiciona bordas às células */
+}
+
+.mat-header-row {
+  background-color: #f0f0f0; /* Cor de fundo do cabeçalho */
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f9f9f9; /* Cor de fundo das linhas pares */
+}
+
+.mat-row:hover {
+  background-color: #e5e5e5; /* Cor de fundo ao passar o mouse sobre as linhas */
+}
+
+.mat-header-cell {
+  text-align: center; /* Centraliza o texto no cabeçalho */
+  font-weight: bold; /* Define o texto do cabeçalho em negrito */
+}
+
+.mat-cell {
+  text-align: center; /* Centraliza o texto nas células */
+}
+
+.btn-primary {
+  display: flex; /* Use flexbox para posicionar o botão verticalmente */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  justify-content: center; /* Alinha os itens horizontalmente no centro */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  bottom: 20px; /* Define a margem inferior */
+  width: 100%; /* O botão ocupará toda a largura do contêiner */
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    width: auto; /* O botão terá a largura automática em telas menores */
+  }
+}

@@ -10,14 +10,12 @@ import { pessoaModelView } from 'src/app/classes/pessoa';
 })
 export class CadastroPessoaComponent {
   cadastroForm: FormGroup = new FormGroup({}); // Inicialização da propriedade cadastroForm
-  formulario!: FormGroup<any>;
+  objPessoa: pessoaModelView = new pessoaModelView(); // Remova a inicialização do objeto
+  lsPessoas: pessoaModelView[] = []; // Remova a inicialização da lista
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.criarFormulario();
   }
-
-  objPessoa = new pessoaModelView() //instanciando objeto
-  lsPessoas : pessoaModelView[] =[]; //instanciando objeto
 
   criarFormulario() {
     this.cadastroForm = this.fb.group({
@@ -29,37 +27,56 @@ export class CadastroPessoaComponent {
       dataNascimento: ['', Validators.required],
       senhaPessoa: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]]
     });
-
   }
 
   get form() {
     return this.cadastroForm.controls;
   }
 
-  corrigirIdade() {
-    const idadeControl = this.cadastroForm.get('idade');
-    if (idadeControl && idadeControl.value < 0) {
-      idadeControl.setValue(0);
-    }
-  }
-
   onSubmit() {
-    if (this.cadastroForm.valid) {
+    if (this.cadastroForm.valid && this.camposPreenchidos()) {
       console.log('Formulário válido. Enviar para o servidor:', this.cadastroForm.value);
       // Aqui você pode enviar os dados para o servidor
+
+      // Após o cadastro, redirecione para a lista de pessoas
+      this.redirecionarParaListaPessoa();
     } else {
       console.log('Formulário inválido. Verifique os campos.');
       // Aqui você pode implementar alguma lógica para lidar com o formulário inválido, como exibir mensagens de erro
     }
   }
 
+  camposPreenchidos(): boolean {
+    const controls = this.cadastroForm.controls;
+    if (!controls) {
+      return false; // Retorna falso se this.cadastroForm.controls for nulo
+    }
+
+    for (const key in controls) {
+      if (controls.hasOwnProperty(key)) {
+        const control = controls[key];
+        if (!control) {
+          continue; // Pula para a próxima iteração se o controle for nulo
+        }
+        if (control.errors && control.errors['required']) {
+          return false; // Retorna falso se algum campo obrigatório estiver vazio
+        }
+      }
+    }
+    return true; // Retorna verdadeiro se todos os campos obrigatórios estiverem preenchidos
+  }
+
+
   voltarParaTelaInicial() {
     this.router.navigate(['']); // Navegação para a rota inicial
   }
 
-  limparFormulario(){
+  limparFormulario() {
     this.objPessoa = new pessoaModelView(); // Recria o objeto pessoaModelView
     this.cadastroForm.reset(); // Reseta o formulário
   }
-  }
 
+  redirecionarParaListaPessoa(): void {
+    this.router.navigate(['/lista-pessoa']);
+  }
+}

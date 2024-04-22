@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastroPessoaComponent } from './componentes/cadastro-pessoa/cadastro-pessoa.component';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { ListaPessoaComponent } from './componentes/lista-pessoa/lista-pessoa.component';
+import { AuthGuard } from './auth.guard';
+
 
 const appRoutes: Routes = [
   {
     path: 'cadastro-pessoa', // Define o caminho da rota, acessível por meio do URL '/cadastro-pessoa'
     component: CadastroPessoaComponent, // Associa o componente CadastroPessoaComponent a essa rota
-    canActivate: [], // Lista de guardas de rota que serão acionados para verificar se a rota pode ser ativada
+    canActivate: [AuthGuard], // Lista de guardas de rota que serão acionados para verificar se a rota pode ser ativada
   },
 
   {
@@ -20,7 +22,7 @@ const appRoutes: Routes = [
   {
     path: 'lista-pessoa',
     component: ListaPessoaComponent,
-    canActivate: [],
+    canActivate: [AuthGuard],
   },
 
   {
