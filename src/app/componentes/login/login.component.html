@@ -12,9 +12,9 @@
       <input matInput [(ngModel)]="senha" [ngModelOptions]="{standalone: true}" type="password" placeholder="Digite a senha">
     </mat-form-field>
     <button mat-raised-button type="submit" class="btn-login btn-submit">Login</button>
-    <button mat-button class="btn-submit custom-button" (click)="recuperarSenha()">Recuperar Senha</button>
+  </form>
+  <button mat-button class="btn-submit custom-button" (click)="recuperarSenha()">Recuperar Senha</button>
     <!-- Botão para criar cadastro -->
     <button class="btn btn-submit custom-button" *ngIf="exibirBotaoCadastro" (click)="irParaCadastroPessoa()">Criar um novo cadastro</button>
-  </form>
 </div>
 

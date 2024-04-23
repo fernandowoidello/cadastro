@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms'; // Importações do projeto
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { LoginComponent } from './componentes/login/login.component';
 import { CadastroPessoaComponent } from './componentes/cadastro-pessoa/cadastro-pessoa.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar'; // Importações do Angular Material
@@ -29,7 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    CabecalhoComponent,
+    LoginComponent,
     CadastroPessoaComponent,
     ListaPessoaComponent
   ],

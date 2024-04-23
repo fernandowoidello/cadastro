@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ListaPessoaComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'sobrenome', 'telefone', 'email', 'cpf', 'dataNascimento'];
+  //exibirBotaoCadastro: boolean = true; // Variável de controle para exibir ou não o botão
+
 
   pessoas: any[] = [];
   ordenacao: string = ''; // Armazena o campo de ordenação
@@ -79,4 +81,8 @@ export class ListaPessoaComponent implements OnInit {
       }
     });
   }
+  irParaCadastroPessoa(): void {
+    // Define como false para esconder o botão
+    this.router.navigate(['/cadastro-pessoa']);
+}
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroPessoaComponent } from './componentes/cadastro-pessoa/cadastro-pessoa.component';
-import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { LoginComponent } from './componentes/login/login.component';
 import { ListaPessoaComponent } from './componentes/lista-pessoa/lista-pessoa.component';
 import { AuthGuard } from './auth.guard';
 
@@ -15,7 +15,7 @@ const appRoutes: Routes = [
 
   {
     path: 'login', //cabecalho
-    component: CabecalhoComponent,
+    component: LoginComponent,
     canActivate: [],
   },
 

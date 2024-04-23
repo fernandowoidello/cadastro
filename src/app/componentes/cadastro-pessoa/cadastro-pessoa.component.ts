@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; // Importe o Router
 import { pessoaModelView } from 'src/app/classes/pessoa';
+import { ToastrService } from 'ngx-toastr'; // Importe o ToastrService
+
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -13,7 +15,7 @@ export class CadastroPessoaComponent {
   objPessoa: pessoaModelView = new pessoaModelView(); // Remova a inicialização do objeto
   lsPessoas: pessoaModelView[] = []; // Remova a inicialização da lista
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
     this.criarFormulario();
   }
 
@@ -76,7 +78,32 @@ export class CadastroPessoaComponent {
     this.cadastroForm.reset(); // Reseta o formulário
   }
 
+// // Método para realizar o cadastro
+// cadastrar(): void {
+//   // Obtém os dados do formulário
+//   const dados = this.cadastroForm.value;
+
+//   // Envia os dados para o backend
+//   this.http.post<any>('URL_DO_BACKEND/cadastrar', dados).subscribe(
+//     () => {
+//       // Limpa o formulário
+//       this.cadastroForm.reset();
+//       // Exibe mensagem de sucesso utilizando Toastr
+//       this.toastr.success('Cadastro realizado com sucesso!', 'Sucesso');
+//       // Redireciona para a lista de pessoas após o cadastro
+//       this.router.navigate(['/lista-pessoa']);
+//     },
+//     error => {
+//       // Exibe mensagem de erro utilizando Toastr em caso de falha no cadastro
+//       this.toastr.error('Erro ao cadastrar. Tente novamente mais tarde.', 'Erro');
+//       console.error('Erro no cadastro:', error);
+//     }
+//   );
+// }
+
   redirecionarParaListaPessoa(): void {
+    this.toastr.success('Cadastro realizado com sucesso!', 'Sucesso');
     this.router.navigate(['/lista-pessoa']);
+
   }
 }

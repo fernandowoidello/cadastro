@@ -30,9 +30,11 @@
       <label for="senhaPessoa">Senha:</label>
       <input type="text" class="form-control" id="senha" placeholder="Digite a sua senha" formControlName="senha" required>
     </div>
-    <button mat-button color="primary" (click)="redirecionarParaListaPessoa()">Cadastrar</button>
-<button mat-button color="warn" (click)="limparFormulario()">Cancelar</button>
-<button mat-button color="accent" (click)="voltarParaTelaInicial()">Voltar para Tela Inicial</button>
 
+<div class="d-flex justify-content-center">
+    <button mat-raised-button color="basic" class="m-2" (click)="redirecionarParaListaPessoa()">Cadastrar</button>
+    <button mat-raised-button color="basic" class="m-2" (click)="limparFormulario()">Limpar Formulario</button>
+    <button mat-raised-button color="basic" class="m-2" (click)="voltarParaTelaInicial()">Voltar para Tela Inicial</button>
+</div>
   </form>
 </div>
